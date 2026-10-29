@@ -1,0 +1,85 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-copy">
+            <p class="eyebrow">Consultoría jurídica</p>
+            <h1>Defendemos sus derechos con rigor y confidencialidad</h1>
+            <p class="lead">
+                Asesoría Legal Global facilita el registro de clientes y la gestión segura de
+                documentos legales, para que pueda concentrarse en lo importante.
+            </p>
+            <div class="hero-actions">
+                <a class="btn btn-gold" asp-page="/Registro">Registrarme</a>
+                <a class="btn btn-outline-light" asp-page="/Login">Iniciar sesión</a>
+            </div>
+        </div>
+        <div class="hero-media">
+            <img src="~/images/banner-empresa.png" alt="Identidad visual de Asesoría Legal Global" class="hero-banner" />
+        </div>
+    </div>
+</section>
+
+<section class="section about-section" id="nosotros">
+    <div class="container about-grid">
+        <div class="about-logo-wrap">
+            <img src="~/images/logo-principal.png" alt="Emblema de justicia de Asesoría Legal Global" class="about-logo" />
+        </div>
+        <div>
+            <p class="eyebrow dark">Sobre el estudio</p>
+            <h2>Un espacio digital para clientes y expedientes</h2>
+            <p>
+                La empresa ofrece servicios de asesoramiento en temas legales y necesita un
+                sistema eficiente y seguro para interactuar con sus clientes. Este sitio permite
+                captar nuevos usuarios, iniciar sesión y administrar archivos jurídicos de forma
+                controlada.
+            </p>
+            <ul class="check-list">
+                <li>Registro de clientes con validaciones</li>
+                <li>Sesión personalizada y cookie de acceso</li>
+                <li>Carga protegida de documentos legales</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section services-section" id="servicios">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Áreas de práctica</p>
+            <h2>Servicios pensados para particulares y empresas</h2>
+        </div>
+        <div class="cards-grid">
+            <article class="info-card">
+                <h3>Derecho societario</h3>
+                <p>Constitución de sociedades, contratos comerciales y cumplimiento normativo.</p>
+            </article>
+            <article class="info-card">
+                <h3>Laboral y previsional</h3>
+                <p>Asesoramiento a empleadores y trabajadores en conflictos y convenios.</p>
+            </article>
+            <article class="info-card">
+                <h3>Contratos y patrimonio</h3>
+                <p>Redacción, revisión y resguardo de documentación contractual.</p>
+            </article>
+            <article class="info-card">
+                <h3>Gestión documental</h3>
+                <p>Repositorio privado para que cada cliente suba y consulte sus archivos.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section cta-section">
+    <div class="container cta-box">
+        <div>
+            <h2>Regístrese y acceda a su espacio de documentos</h2>
+            <p>Cree su usuario, inicie sesión y cargue archivos de manera segura.</p>
+        </div>
+        <a class="btn btn-gold" asp-page="/Registro">Crear cuenta</a>
+    </div>
+</section>

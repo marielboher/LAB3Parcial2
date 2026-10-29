@@ -1,0 +1,17 @@
+﻿@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<section class="section">
+    <div class="container form-card">
+        <h1>Ocurrió un error</h1>
+        <p>No se pudo completar la solicitud. Intente nuevamente desde el inicio.</p>
+        @if (Model.ShowRequestId)
+        {
+            <p><strong>Identificador:</strong> <code>@Model.RequestId</code></p>
+        }
+        <a class="btn btn-gold" asp-page="/Index">Volver al inicio</a>
+    </div>
+</section>

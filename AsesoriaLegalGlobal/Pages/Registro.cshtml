@@ -1,0 +1,76 @@
+@page
+@model RegistroModel
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">Nuevos clientes</p>
+        <h1>Formulario de registro</h1>
+        <p>Complete sus datos para crear una cuenta. Todos los campos son obligatorios.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container form-layout">
+        <div class="form-card">
+            <form method="post" novalidate>
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="Input.Nombre" class="form-label"></label>
+                        <input asp-for="Input.Nombre" class="form-control" autocomplete="given-name" />
+                        <span asp-validation-for="Input.Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Input.Apellido" class="form-label"></label>
+                        <input asp-for="Input.Apellido" class="form-control" autocomplete="family-name" />
+                        <span asp-validation-for="Input.Apellido" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Input.Correo" class="form-label"></label>
+                        <input asp-for="Input.Correo" class="form-control" autocomplete="email" />
+                        <span asp-validation-for="Input.Correo" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Input.Usuario" class="form-label"></label>
+                        <input asp-for="Input.Usuario" class="form-control" autocomplete="username" />
+                        <span asp-validation-for="Input.Usuario" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Input.Edad" class="form-label"></label>
+                        <input asp-for="Input.Edad" class="form-control" type="number" min="16" max="120" />
+                        <span asp-validation-for="Input.Edad" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Input.Contrasena" class="form-label"></label>
+                        <input asp-for="Input.Contrasena" class="form-control" autocomplete="new-password" />
+                        <span asp-validation-for="Input.Contrasena" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Input.ConfirmarContrasena" class="form-label"></label>
+                        <input asp-for="Input.ConfirmarContrasena" class="form-control" autocomplete="new-password" />
+                        <span asp-validation-for="Input.ConfirmarContrasena" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-gold mt-4">Registrar</button>
+            </form>
+        </div>
+        <aside class="form-aside">
+            <img src="~/images/logo-principal.png" alt="Logo del estudio" />
+            <h2>¿Qué se guarda al registrarse?</h2>
+            <ul class="check-list">
+                <li>El <strong>nombre de usuario</strong> se almacena en la sesión.</li>
+                <li>La <strong>contraseña</strong> se guarda en una cookie.</li>
+                <li>Luego podrá iniciar sesión y entrar a su espacio de documentos.</li>
+            </ul>
+        </aside>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

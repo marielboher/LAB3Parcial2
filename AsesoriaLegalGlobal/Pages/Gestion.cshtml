@@ -1,0 +1,101 @@
+@page
+@model GestionModel
+@{
+    ViewData["Title"] = "Gestión de documentos";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">Espacio personal</p>
+        <h1>Hola, @Model.NombreCompleto</h1>
+        <p>Este es su repositorio privado para documentos legales.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        @if (!string.IsNullOrWhiteSpace(Model.MensajeOk))
+        {
+            <div class="alert alert-success">@Model.MensajeOk</div>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.MensajeError))
+        {
+            <div class="alert alert-danger">@Model.MensajeError</div>
+        }
+
+        <div class="dashboard-grid">
+            <article class="info-card session-card">
+                <h2>Datos de su sesión</h2>
+                <dl class="session-list">
+                    <div>
+                        <dt>Usuario (sesión)</dt>
+                        <dd>@Model.Usuario</dd>
+                    </div>
+                    <div>
+                        <dt>Correo</dt>
+                        <dd>@Model.Correo</dd>
+                    </div>
+                    <div>
+                        <dt>Edad</dt>
+                        <dd>@Model.Edad</dd>
+                    </div>
+                    <div>
+                        <dt>Cookie de contraseña</dt>
+                        <dd>@(Model.TieneCookieContrasena ? "Presente (HttpOnly)" : "No encontrada")</dd>
+                    </div>
+                </dl>
+            </article>
+
+            <article class="info-card upload-card">
+                <h2>Cargar documento</h2>
+                <p>Formatos permitidos: PDF, DOC, DOCX, TXT, JPG y PNG. Tamaño máximo: 5 MB.</p>
+                <form method="post" enctype="multipart/form-data" asp-page-handler="Subir">
+                    <label class="form-label" for="Documento">Seleccionar archivo</label>
+                    <input class="form-control" type="file" id="Documento" name="Documento" required
+                           accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" />
+                    <button type="submit" class="btn btn-gold mt-3">Subir documento</button>
+                </form>
+            </article>
+        </div>
+
+        <article class="info-card documents-card">
+            <h2>Documentos cargados</h2>
+            @if (Model.Documentos.Count == 0)
+            {
+                <p class="empty-state">Todavía no hay archivos en su espacio. Suba el primero para comenzar.</p>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="docs-table">
+                        <thead>
+                            <tr>
+                                <th>Archivo</th>
+                                <th>Tamaño</th>
+                                <th>Fecha</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var doc in Model.Documentos)
+                        {
+                            <tr>
+                                <td data-label="Archivo">@doc.NombreOriginal</td>
+                                <td data-label="Tamaño">@doc.TamanoLegible</td>
+                                <td data-label="Fecha">@doc.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td class="actions-cell">
+                                    <a class="link-action" asp-page="/Gestion" asp-page-handler="Descargar" asp-route-archivo="@doc.Nombre">Descargar</a>
+                                    <form method="post" asp-page-handler="Eliminar" asp-route-archivo="@doc.Nombre" class="inline-form"
+                                          onsubmit="return confirmarEliminar('@doc.NombreOriginal');">
+                                        <button type="submit" class="link-action danger">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </article>
+    </div>
+</section>
