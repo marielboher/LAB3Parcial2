@@ -25,10 +25,10 @@
 
         <div class="dashboard-grid">
             <article class="info-card session-card">
-                <h2>Datos de su sesión</h2>
+                <h2>Sus datos</h2>
                 <dl class="session-list">
                     <div>
-                        <dt>Usuario (sesión)</dt>
+                        <dt>Usuario</dt>
                         <dd>@Model.Usuario</dd>
                     </div>
                     <div>
@@ -38,10 +38,6 @@
                     <div>
                         <dt>Edad</dt>
                         <dd>@Model.Edad</dd>
-                    </div>
-                    <div>
-                        <dt>Cookie de contraseña</dt>
-                        <dd>@(Model.TieneCookieContrasena ? "Presente (HttpOnly)" : "No encontrada")</dd>
                     </div>
                 </dl>
             </article>
@@ -84,7 +80,7 @@
                                 <td data-label="Tamaño">@doc.TamanoLegible</td>
                                 <td data-label="Fecha">@doc.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
                                 <td class="actions-cell">
-                                    <a class="link-action" asp-page="/Gestion" asp-page-handler="Descargar" asp-route-archivo="@doc.Nombre">Descargar</a>
+                                    <a class="link-action" asp-page="/Gestion" asp-page-handler="Ver" asp-route-archivo="@doc.Nombre" target="_blank" rel="noopener">Ver</a>
                                     <form method="post" asp-page-handler="Eliminar" asp-route-archivo="@doc.Nombre" class="inline-form"
                                           onsubmit="return confirmarEliminar('@doc.NombreOriginal');">
                                         <button type="submit" class="link-action danger">Eliminar</button>

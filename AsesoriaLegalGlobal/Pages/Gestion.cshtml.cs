@@ -35,7 +35,6 @@ public class GestionModel : PageModel
     public string NombreCompleto { get; private set; } = string.Empty;
     public string Correo { get; private set; } = string.Empty;
     public string Edad { get; private set; } = string.Empty;
-    public bool TieneCookieContrasena { get; private set; }
     public string? MensajeOk { get; set; }
     public string? MensajeError { get; set; }
     public List<DocumentoItem> Documentos { get; private set; } = new();
@@ -111,7 +110,7 @@ public class GestionModel : PageModel
         return Page();
     }
 
-    public IActionResult OnGetDescargar(string archivo)
+    public IActionResult OnGetVer(string archivo)
     {
         if (!EstaAutenticado())
         {
@@ -125,7 +124,9 @@ public class GestionModel : PageModel
         }
 
         var nombreVisible = ExtraerNombreOriginal(Path.GetFileName(ruta));
-        return PhysicalFile(ruta, "application/octet-stream", nombreVisible);
+        var contentType = ObtenerContentType(Path.GetExtension(ruta));
+        Response.Headers.ContentDisposition = $"inline; filename=\"{nombreVisible}\"";
+        return PhysicalFile(ruta, contentType);
     }
 
     public IActionResult OnPostEliminar(string archivo)
@@ -167,7 +168,6 @@ public class GestionModel : PageModel
 
         Correo = HttpContext.Session.GetString("Correo") ?? "-";
         Edad = HttpContext.Session.GetString("Edad") ?? "-";
-        TieneCookieContrasena = Request.Cookies.ContainsKey("ContrasenaUsuario");
         Documentos = ListarDocumentos();
     }
 
@@ -229,4 +229,15 @@ public class GestionModel : PageModel
             ? nombreArchivo[(posicion + 1)..]
             : nombreArchivo;
     }
+
+    private static string ObtenerContentType(string extension) => extension.ToLowerInvariant() switch
+    {
+        ".pdf" => "application/pdf",
+        ".txt" => "text/plain; charset=utf-8",
+        ".jpg" or ".jpeg" => "image/jpeg",
+        ".png" => "image/png",
+        ".doc" => "application/msword",
+        ".docx" => "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        _ => "application/octet-stream"
+    };
 }

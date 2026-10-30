@@ -38,7 +38,7 @@ public class RegistroModel : PageModel
                 SameSite = SameSiteMode.Lax
             });
 
-        TempData["Mensaje"] = "Registro exitoso. La contraseña se guardó en una cookie y el usuario en sesión. Inicie sesión para continuar.";
+        TempData["Mensaje"] = "Registro exitoso. Inicie sesión para continuar.";
         return RedirectToPage("/Login");
     }
 }
