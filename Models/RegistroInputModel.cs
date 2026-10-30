@@ -42,3 +42,4 @@ public class RegistroInputModel
     [Display(Name = "Apellido")]
     public string Apellido { get; set; } = string.Empty;
 }
+

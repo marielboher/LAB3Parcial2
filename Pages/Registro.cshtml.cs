@@ -42,3 +42,4 @@ public class RegistroModel : PageModel
         return RedirectToPage("/Login");
     }
 }
+

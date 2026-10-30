@@ -13,3 +13,4 @@ public class DocumentoItem
             ? $"{TamanoBytes / 1024.0:0.0} KB"
             : $"{TamanoBytes / (1024.0 * 1024.0):0.00} MB";
 }
+

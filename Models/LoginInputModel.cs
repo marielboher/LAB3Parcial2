@@ -13,3 +13,4 @@ public class LoginInputModel
     [Display(Name = "Contraseña")]
     public string Contrasena { get; set; } = string.Empty;
 }
+
