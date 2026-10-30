@@ -142,7 +142,7 @@ img {
 .hero {
     background:
         linear-gradient(120deg, rgba(11, 27, 58, 0.92), rgba(19, 40, 79, 0.78)),
-        url("../images/banner-empresa.png") center/cover no-repeat;
+        url("../imagenes/banner-empresa.png") center/cover no-repeat;
     color: #fff;
     padding: 4.5rem 0 4rem;
 }

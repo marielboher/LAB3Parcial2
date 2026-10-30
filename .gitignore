@@ -4,8 +4,7 @@
 ## Get latest from `dotnet new gitignore`
 
 # Documentos subidos por usuarios
-App_Data/documentos/**
-!App_Data/documentos/.gitkeep
+wwwroot/documentos/
 
 # dotenv files
 .env

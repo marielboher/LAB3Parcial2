@@ -200,7 +200,7 @@ public class GestionModel : PageModel
             usuario = usuario.Replace(caracter, '_');
         }
 
-        return Path.Combine(_entorno.ContentRootPath, "App_Data", "documentos", usuario);
+        return Path.Combine(_entorno.WebRootPath, "documentos", usuario);
     }
 
     private string? RutaSegura(string? archivo)
