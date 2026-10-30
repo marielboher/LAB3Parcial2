@@ -7,7 +7,6 @@ Sitio web en **ASP.NET Core Razor Pages** para el Parcial 2 TP4 (LP3): registro 
 Requisitos: [.NET 8 SDK](https://dotnet.microsoft.com/download) o Visual Studio 2022.
 
 ```bash
-cd AsesoriaLegalGlobal
 dotnet run
 ```
 
@@ -21,7 +20,7 @@ También se puede abrir `AsesoriaLegalGlobal.sln` en Visual Studio y presionar F
 2. **Registro:** intentar enviar vacío, correo inválido, edad 15 o menor y contraseñas distintas. Luego registrar un usuario válido.
 3. **Cookies y sesión:** en DevTools (F12) → Application, mostrar la cookie `ContrasenaUsuario` y la sesión `.AsesoriaLegal.Session`.
 4. **Login:** iniciar sesión y comprobar la redirección a *Mi espacio*.
-5. **Documentos:** subir un PDF (o imagen), listarlo, descargarlo y rechazar un archivo no permitido o demasiado grande.
+5. **Documentos:** subir un PDF (o imagen), listarlo, abrirlo con **Ver** y rechazar un archivo no permitido o demasiado grande.
 6. **Responsive:** achicar la ventana o usar la vista móvil del navegador.
 
 ## Requisitos cubiertos

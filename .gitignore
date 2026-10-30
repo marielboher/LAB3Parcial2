@@ -4,8 +4,8 @@
 ## Get latest from `dotnet new gitignore`
 
 # Documentos subidos por usuarios
-AsesoriaLegalGlobal/App_Data/documentos/**
-!AsesoriaLegalGlobal/App_Data/documentos/.gitkeep
+App_Data/documentos/**
+!App_Data/documentos/.gitkeep
 
 # dotenv files
 .env
